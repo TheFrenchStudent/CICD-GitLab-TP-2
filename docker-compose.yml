@@ -1,16 +1,8 @@
 services:
-  docker-nginx:
-    build: .
-    ports:
-      - 8020:80
+  runner-cicd:
+    image: gitlab/gitlab-runner
     restart: always
-    container_name: serveur_nginx
+    container_name: docker-cicd
     volumes:
-      - nginx_data:/var/www/html
-    networks:
-      - docker-nginx
-
-networks:
- docker-nginx:
-volumes:
-  nginx_data: {}
+      - '${GITLAB_HOME}/config/gitlab-runner-cicd:/etc/gitlab-runner'
+      - /var/run/docker.sock:/var/run/docker.sock
