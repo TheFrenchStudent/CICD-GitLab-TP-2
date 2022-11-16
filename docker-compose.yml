@@ -1,0 +1,16 @@
+services:
+  docker-nginx:
+    build: .
+    ports:
+      - 8020:80
+    restart: always
+    container_name: serveur_nginx
+    volumes:
+      - nginx_data:/var/www/html
+    networks:
+      - docker-nginx
+
+networks:
+ docker-nginx:
+volumes:
+  nginx_data: {}

@@ -1,0 +1,30 @@
+# Pipeline jobs
+stages:
+  - tests
+  - build
+  - livraison
+
+phase_test:
+  stage: tests
+  script:
+    - if [ -f "~/home/hadrien/gitlab/ci-cd-gitlab-tp-2/index.html" ]; then echo "File is there" fi
+  tags:
+    - docker-tp
+
+phase_build:
+  stage: build
+  script:
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER $CI_REGISTRY --password-stdin
+    - docker build -t $CI_REGISTRY_IMAGE .
+    - docker push $CI_REGISTRY_IMAGE
+  tags:
+    - docker-tp
+
+phase_livraison:
+  stage: livraison
+  script:
+    - docker-compose up -d
+  tags:
+    - docker-tp
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
