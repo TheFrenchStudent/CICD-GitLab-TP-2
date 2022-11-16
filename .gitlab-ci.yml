@@ -1,4 +1,4 @@
-# Pipeline jobs
+# Pipeline CICD
 stages:
   - tests
   - build
