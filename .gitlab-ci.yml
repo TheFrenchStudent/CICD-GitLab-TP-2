@@ -23,6 +23,7 @@ phase_build:
 
 phase_livraison:
   stage: livraison
+  image: docker
   script:
     - docker build -t my_nginx .
   tags:
