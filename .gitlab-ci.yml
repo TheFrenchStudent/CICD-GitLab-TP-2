@@ -7,7 +7,7 @@ stages:
 phase_test:
   stage: tests
   script:
-    - if [ -f "~/home/hadrien/gitlab/ci-cd-gitlab-tp-2/index.html" ]; then echo "File is there" fi
+    - if [ -f "~/home/hadrien/gitlab/ci-cd-gitlab-tp-2/index.html" ]; then echo "File is there"; fi
   tags:
     - docker-tp
 
