@@ -25,7 +25,7 @@ phase_livraison:
   stage: livraison
   image: docker
   script:
-    - docker build -t my_nginx .
+    - docker run -d --name my_nginx -it ci-cd-gitlab-tp-2
   tags:
     - docker-tp
   rules:
