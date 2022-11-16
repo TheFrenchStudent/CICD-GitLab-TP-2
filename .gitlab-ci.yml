@@ -25,7 +25,7 @@ phase_livraison:
   stage: livraison
   image: docker
   script:
-    - docker run -d --name my_nginx -it $CI_REGISTRY_IMAGE
+    - docker run -d --name my_nginx -it $CI_REGISTRY_IMAGE -p 8020:80
   tags:
     - docker-tp
   rules:
