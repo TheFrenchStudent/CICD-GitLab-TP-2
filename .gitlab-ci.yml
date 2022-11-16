@@ -24,7 +24,7 @@ phase_build:
 phase_livraison:
   stage: livraison
   script:
-    - docker-compose up -d
+    - docker build -t my_nginx .
   tags:
     - docker-tp
   rules:
